@@ -1,11 +1,14 @@
-runtime: nodejs18
-
+runtime: nodejs20
+service: frontend-service
 instance_class: F1
 
 handlers:
   - url: /
-    static_files: build/index.html
-    upload: build/index.html
+    static_files: dist/index.html
+    upload: dist/index.html
 
-  - url: /
-    static_dir: build
+  - url: /(.*)
+    static_files: dist/\1
+    upload: dist/(.*)
+
+default_expiration: '1h'
