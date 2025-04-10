@@ -11,7 +11,7 @@ steps:
       - '-m'
       - 'cp'
       - '-r'
-      - 'frontend/dist/*'
+      - 'frontend/build/*'
       - 'gs://mysqlnotes'
 
 options:
