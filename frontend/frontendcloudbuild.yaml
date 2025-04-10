@@ -1,0 +1,18 @@
+steps:
+  - name: 'gcr.io/cloud-builders/npm'
+    dir: 'frontend'
+    args: ['install']
+  - name: 'gcr.io/cloud-builders/npm'
+    dir: 'frontend'
+    args: ['run', 'build']
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    args:
+      - 'gsutil'
+      - '-m'
+      - 'cp'
+      - '-r'
+      - 'frontend/dist/*'
+      - 'gs://mysqlnotes'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
